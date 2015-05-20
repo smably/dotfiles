@@ -11,6 +11,7 @@ Plug 'tpope/vim-sensible'
 Plug 'morhetz/gruvbox'
 Plug 'nanotech/jellybeans.vim'
 Plug 'jordwalke/flatlandia'
+Plug 'ajh17/Spacegray.vim'
 
 " Airline status line
 Plug 'bling/vim-airline'
@@ -60,6 +61,8 @@ silent! colorscheme gruvbox      " Fail silently if it doesn't exist
 
 " jordwalke/flatlandia
 
+" ajh17/Spacegray.vim
+
 " bling/vim-airline
 let g:airline_powerline_fonts = 1
 
@@ -105,7 +108,6 @@ set smartcase
 set nowrap
 
 set cursorline
-set colorcolumn=80
 
 " allow cursor to go one character past end of line in normal mode or anywhere
 " in visual block mode
@@ -146,6 +148,9 @@ nmap Q <nop>
 
 " make :Q quit
 cabbrev Q q
+
+" make :W write
+cabbrev W w
 
 " make Y yank to end of line
 nnoremap Y y$

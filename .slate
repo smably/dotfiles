@@ -1,0 +1,90 @@
+# Configs
+config defaultToCurrentScreen true
+config nudgePercentOf screenSize
+config resizePercentOf screenSize
+config secondsBetweenRepeat 0.1
+config checkDefaultsOnLoad true
+config focusCheckWidthMax 3000
+config keyboardLayout dvorak
+config windowHintsShowIcons true
+config windowHintsIgnoreHiddenWindows false
+#config windowHintsDuration 5
+config windowHintsSpread true
+#config windowHintsOrder persist
+
+# Misc Aliases
+alias showHintsLeftHand hint AOEUIYQJKX
+alias showNormalHint hint AOEUIDHTNSYXFBPKGMCW
+
+# App Aliases
+alias IDE 'IntelliJ IDEA'
+alias terminal 'iTerm'
+alias editor 'MacVim'
+alias browser 'Google Chrome'
+alias email 'Microsoft Outlook'
+alias jabber 'Adium'
+alias jabber-contacts 'Contacts'
+alias skype 'Skype'
+alias slack 'Slack'
+
+# Monitor Aliases
+alias mon-laptop      1440x900
+alias mon-dell-22inch 1920x1080
+
+
+# # Abstract positions
+# alias  full              move  screenOriginX;screenOriginY                   screenSizeX;screenSizeY
+# alias  lefthalf          move  screenOriginX;screenOriginY                   screenSizeX/2;screenSizeY
+# alias  righthalf         move  screenOriginX+screenSizeX/2;screenOriginY     screenSizeX/2;screenSizeY
+# alias  rightmost         move  screenOriginX+screenSizeX*0.4;screenOriginY   screenSizeX*0.6;screenSizeY
+# alias  rightless         move  screenOriginX+screenSizeX*0.6;screenOriginY   screenSizeX*0.4;screenSizeY
+# alias  leftmost          move  screenOriginX;screenOriginY                   screenSizeX*0.6;screenSizeY
+# alias  leftless          move  screenOriginX;screenOriginY                   screenSizeX*0.4;screenSizeY
+
+# Concrete positions
+alias  full-0             move  screenOriginX;screenOriginY                   screenSizeX;screenSizeY        0
+alias  left-0             move  screenOriginX;screenOriginY                   screenSizeX/2;screenSizeY      0
+alias  right-0            move  screenOriginX+screenSizeX/2;screenOriginY     screenSizeX/2;screenSizeY      0
+alias  IDE-0              move  screenOriginX+screenSizeX*0.02;screenOriginY  screenSizeX*0.96;screenSizeY   0
+alias  outlook-0          move  screenOriginX+screenSizeX*0.25;screenOriginY  screenSizeX*0.75;screenSizeY   0
+alias  jabber-main-0      move  screenOriginX+200;screenOriginY               screenSizeX/2-200;screenSizeY  0
+alias  jabber-contacts-0  move  screenOriginX;screenOriginY                   200;screenSizeY                0
+
+alias  full-1             move  screenOriginX;screenOriginY                   screenSizeX;screenSizeY        1
+alias  left-1             move  screenOriginX;screenOriginY                   screenSizeX/2;screenSizeY      1
+alias  right-1            move  screenOriginX+screenSizeX/2;screenOriginY     screenSizeX/2;screenSizeY      1
+alias  jabber-main-1      move  screenOriginX+200;screenOriginY               screenSizeX/2-200;screenSizeY  1
+alias  jabber-contacts-1  move  screenOriginX;screenOriginY                   200;screenSizeY                1
+
+alias  full-2             move  screenOriginX;screenOriginY                   screenSizeX;screenSizeY        2
+alias  left-2             move  screenOriginX;screenOriginY                   screenSizeX/2;screenSizeY      2
+alias  right-2            move  screenOriginX+screenSizeX/2;screenOriginY     screenSizeX/2;screenSizeY      2
+alias  jabber-main-2      move  screenOriginX+200;screenOriginY               screenSizeX/2-200;screenSizeY  2
+alias  jabber-contacts-2  move  screenOriginX;screenOriginY                   200;screenSizeY                2
+
+# 3 Monitor layout
+layout 3monitors ${terminal}:MAIN_FIRST                    ${left-0} | ${right-0}
+layout 3monitors ${editor}:MAIN_FIRST                      ${right-0} | ${left-0}
+layout 3monitors ${IDE}:REPEAT                             ${IDE-0}
+layout 3monitors ${browser}:REPEAT                         ${full-1}
+layout 3monitors ${jabber}:TITLE_ORDER=${jabber-contacts}  ${jabber-contacts-2} | ${jabber-main-2}
+layout 3monitors ${skype}:REPEAT                           ${left-2}
+layout 3monitors ${slack}:REPEAT                           ${left-2}
+layout 3monitors ${email}:MAIN_FIRST                       ${right-2}
+
+# 1 Monitor layout
+layout 1monitor  ${terminal}:MAIN_FIRST                    ${left-0} | ${right-0}
+layout 1monitor  ${editor}:MAIN_FIRST                      ${right-0} | ${left-0}
+layout 1monitor  ${IDE}:REPEAT                             ${full-0}
+layout 1monitor  ${browser}:REPEAT                         ${full-0}
+layout 1monitor  ${jabber}:TITLE_ORDER=${jabber-contacts}  ${jabber-contacts-0} | ${jabber-main-0}
+layout 1monitor  ${skype}:REPEAT                           ${left-0}
+layout 1monitor  ${slack}:REPEAT                           ${left-0}
+layout 1monitor  ${email}:MAIN_FIRST                       ${outlook-0}
+
+# Default Layouts
+default 3monitors resolutions:${mon-dell-22inch};${mon-laptop};${mon-dell-22inch}
+default 1monitor  resolutions:${mon-laptop}
+
+bind e:cmd  ${showNormalHint}
+bind esc:alt,ctrl relaunch
