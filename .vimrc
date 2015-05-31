@@ -44,6 +44,9 @@ Plug 'ntpeters/vim-better-whitespace'
 " Allow expansion/contraction of highlighted regions
 Plug 'terryma/vim-expand-region'
 
+" Read EditorConfig info
+Plug 'editorconfig/editorconfig-vim'
+
 call plug#end()
 
 
@@ -92,6 +95,8 @@ let g:airline_powerline_fonts = 1
 " use v to expand selection, ctrl+v to shrink
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
+
+" editorconfig/editorconfig-vim
 
 "==============================================================================
 " General Configuration
