@@ -32,6 +32,12 @@ Plug 'tpope/vim-sleuth'
 " Automatic commenting and uncommenting
 Plug 'tpope/vim-commentary'
 
+" Git integration
+Plug 'tpope/vim-fugitive'
+
+" Automatically updated session files to restore state
+Plug 'tpope/vim-obsession'
+
 " Show visual indication of indent levels
 " FIXME not working for some reason
 " Plug 'nathanaelkane/vim-indent-guides'
@@ -46,6 +52,9 @@ Plug 'terryma/vim-expand-region'
 
 " Read EditorConfig info
 Plug 'editorconfig/editorconfig-vim'
+
+" Show buffers in the statusline
+Plug 'bling/vim-bufferline'
 
 call plug#end()
 
@@ -68,6 +77,7 @@ silent! colorscheme gruvbox      " Fail silently if it doesn't exist
 
 " bling/vim-airline
 let g:airline_powerline_fonts = 1
+let g:airline_section_z = airline#section#create(['%{ObsessionStatus(''$'', '''')}', 'windowswap', '%3p%% ', 'linenr', ':%3v '])
 
 " powerline/fonts
 " Note: if symbols don't show up properly, open fonts from powerline/fonts in
@@ -87,6 +97,10 @@ let g:airline_powerline_fonts = 1
 
 " tpope/vim-commentary
 
+" tpope/vim-fugitive
+
+" tpope/vim-obsession
+
 " Yggdroot/indentLine
 
 " ntpeters/vim-better-whitespace
@@ -97,6 +111,10 @@ vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
 " editorconfig/editorconfig-vim
+
+" bling/vim-bufferline
+" Disable printing to the statusline (command bar only)
+let g:bufferline_echo = 0
 
 "==============================================================================
 " General Configuration
@@ -170,6 +188,9 @@ if has("gui_running")
   nnoremap <silent> <esc> :noh<return><esc>
 endif
 
+" Split vertically by default
+set diffopt+=vertical
+
 " use tab to navigate between splits
 set winwidth=1
 nmap <Tab> <c-w><c-w>
@@ -212,6 +233,18 @@ nnoremap $ $l
 nnoremap <silent>go :set paste<CR>m`o<Esc>``:set nopaste<CR>
 nnoremap <silent>gO :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
+" fix Markdown syntax highlighting
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+" enable fenced code blocks in Markdown files
+let g:markdown_fenced_languages = ['html', 'python', 'javascript', 'bash=sh']
+
+" watch for changes to vimrc files and automatically reload
+augroup myvimrc
+    au!
+    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END
+
 "==============================================================================
 " GUI Configuration
 "==============================================================================
@@ -228,7 +261,9 @@ if has("gui_running") " all this for gui use
     set nolazyredraw
     set lines=60
     set columns=120
-    set guifont=Monaco:h12
-    set guifont=Monaco\ for\ Powerline:h12
+    "set guifont=Monaco:h12
+    "set guifont=Monaco\ for\ Powerline:h12
+    set macligatures
+    set guifont=Fira\ Code:h13
   endif
 endif
