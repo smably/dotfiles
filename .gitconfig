@@ -1,0 +1,40 @@
+[user]
+	name = Sylvan Mably
+	email = smably@ebay.com
+[core]
+	excludesfile = /Users/smably/code/smably-dotfiles/gitignore
+	editor = /usr/bin/vim
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[color]
+	ui = true
+[push]
+	default = simple
+#[credential]
+#	helper = /opt/boxen/bin/boxen-git-credential
+[hub]
+	protocol = https
+	host = github.corp.ebay.com
+[branch]
+	autosetuprebase = always
+[diff]
+	tool = fugitive
+[mergetool "fugitive"]
+	cmd = vim -f -c \"Gdiff\" \"$MERGED\"
+[difftool "mvimdiff"]
+	cmd = mvim -f -d \"$LOCAL\" \"$REMOTE\"
+[url "ssh://git@github.corp.ebay.com/"]
+	insteadOf = https://github.corp.ebay.com/
+[help]
+	autocorrect = 1
+[alias]
+	lg = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+[rebase]
+	autosquash = true
+	autostash = true
+[merge]
+	tool = fugitive
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
