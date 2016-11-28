@@ -245,6 +245,9 @@ augroup myvimrc
     au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
 
+" use bash-style tab completion
+set wildmode=longest,list
+
 "==============================================================================
 " GUI Configuration
 "==============================================================================
