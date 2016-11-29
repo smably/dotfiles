@@ -44,11 +44,6 @@ alias mon-dell-22inch 1920x1080
 alias  full-0             move  screenOriginX;screenOriginY                   screenSizeX;screenSizeY        0
 alias  left-0             move  screenOriginX;screenOriginY                   screenSizeX/2;screenSizeY      0
 alias  right-0            move  screenOriginX+screenSizeX/2;screenOriginY     screenSizeX/2;screenSizeY      0
-alias  IDE-0              move  screenOriginX+screenSizeX*0.02;screenOriginY  screenSizeX*0.96;screenSizeY   0
-alias  outlook-0          move  screenOriginX+screenSizeX*0.25;screenOriginY  screenSizeX*0.75;screenSizeY   0
-alias  slack-0            move  screenOriginX;screenOriginY                   screenSizeX*0.66;screenSizeY   0
-alias  terminal-0         move  screenOriginX;screenOriginY                   screenSizeX*0.75;screenSizeY   0
-alias  terminal2-0        move  screenOriginX+screenSizeX*0.25;screenOriginY  screenSizeX*0.75;screenSizeY   0
 
 alias  full-1             move  screenOriginX;screenOriginY                   screenSizeX;screenSizeY        1
 alias  left-1             move  screenOriginX;screenOriginY                   screenSizeX/2;screenSizeY      1
@@ -58,15 +53,24 @@ alias  full-2             move  screenOriginX;screenOriginY                   sc
 alias  left-2             move  screenOriginX;screenOriginY                   screenSizeX/2;screenSizeY      2
 alias  right-2            move  screenOriginX+screenSizeX/2;screenOriginY     screenSizeX/2;screenSizeY      2
 
+alias  IDE-0              move  screenOriginX+screenSizeX*0.02;screenOriginY  screenSizeX*0.96;screenSizeY   0
+alias  outlook-0          move  screenOriginX+screenSizeX*0.25;screenOriginY  screenSizeX*0.75;screenSizeY   0
+alias  slack-0            move  screenOriginX;screenOriginY                   screenSizeX*0.66;screenSizeY   0
+alias  terminal-0         move  screenOriginX;screenOriginY                   screenSizeX*0.75;screenSizeY   0
+alias  terminal2-0        move  screenOriginX+screenSizeX*0.25;screenOriginY  screenSizeX*0.75;screenSizeY   0
+
+alias  IDE-2              move  screenOriginX+screenSizeX*0.02;screenOriginY  screenSizeX*0.96;screenSizeY   2
+
+
 # 3 Monitor layout
-layout 3monitors ${terminal}:MAIN_FIRST                    ${left-0} | ${right-0}
-layout 3monitors ${editor}:MAIN_FIRST                      ${right-0} | ${left-0}
-layout 3monitors ${IDE}:REPEAT                             ${IDE-0}
-layout 3monitors ${atom}:REPEAT                            ${IDE-0}
-layout 3monitors ${sublime}:REPEAT                         ${IDE-0}
+layout 3monitors ${terminal}:MAIN_FIRST                    ${left-2} | ${right-2}
+layout 3monitors ${editor}:MAIN_FIRST                      ${right-2} | ${left-2}
+layout 3monitors ${IDE}:REPEAT                             ${IDE-2}
+layout 3monitors ${atom}:REPEAT                            ${IDE-2}
+layout 3monitors ${sublime}:REPEAT                         ${IDE-2}
 layout 3monitors ${browser}:REPEAT                         ${full-1}
-layout 3monitors ${slack}:REPEAT                           ${left-2}
-layout 3monitors ${email}:MAIN_FIRST                       ${right-2}
+layout 3monitors ${slack}:REPEAT                           ${right-0}
+layout 3monitors ${email}:MAIN_FIRST                       ${left-0}
 
 # 1 Monitor layout
 layout 1monitor  ${terminal}:MAIN_FIRST                    ${terminal-0} | ${terminal2-0}
