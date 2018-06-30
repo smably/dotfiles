@@ -1,0 +1,30 @@
+[user]
+	name = Sylvan Mably
+	email = sylvan@gmail.com
+[core]
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[push]
+	default = current
+[rebase]
+	autosquash = true
+	autostash = true
+[branch]
+	autosetuprebase = always
+[help]
+	autocorrect = -1
+[alias]
+	amend = commit --amend
+	br = branch --sort=committerdate --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
+	ci = commit
+	co = checkout
+	fixup = !sh -c 'REV=$(git rev-parse $1) && git commit --fixup $@ && GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash --autostash $REV^' -
+	squash = !sh -c 'REV=$(git rev-parse $1) && git commit --squash $@ && git rebase -i --autosquash --autostash $REV^' -
+	undo = reset --soft HEAD^
+	unstage = reset HEAD --
+[rerere]
+	enabled = 1
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

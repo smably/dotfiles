@@ -1,4 +1,15 @@
 "==============================================================================
+" BOOTSTRAP
+"==============================================================================
+
+" Install vim-plug if necessary
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+"==============================================================================
 " PLUGINS
 "==============================================================================
 
@@ -233,6 +244,18 @@ nnoremap $ $l
 nnoremap <silent>go :set paste<CR>m`o<Esc>``:set nopaste<CR>
 nnoremap <silent>gO :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
+" automatically enable paste mode with ctrl+v
+let &t_SI .= "\<Esc>[?2004h"
+let &t_EI .= "\<Esc>[?2004l"
+
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+
+function! XTermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
+endfunction
+
 " fix Markdown syntax highlighting
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
@@ -267,6 +290,6 @@ if has("gui_running") " all this for gui use
     "set guifont=Monaco:h12
     "set guifont=Monaco\ for\ Powerline:h12
     set macligatures
-    set guifont=Fira\ Code:h13
+    set guifont=Iosevka:h12
   endif
 endif

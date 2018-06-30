@@ -1,5 +1,13 @@
 smably's dotfiles repo
 
+INSTALLATION
+bash <(curl -fsSL https://raw.githubusercontent.com/smably/dotfiles/master/bootstrap.sh)
+
 TODO
+ * update .slate and add more dotfiles
+ * back up existing dotfiles before installation?
+
+DONE
  * add script for installation/symlinking
  * add other dotfiles (.bash_profile, .gitconfig, etc.)
+ * make bootstrap script good
