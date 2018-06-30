@@ -45,13 +45,21 @@ if [[ ! -x "$POWERLINE_GO_PATH" ]]; then
   echo
 fi
 
+# Install iTerm2 preferences
+cd "$(dirname "${BASH_SOURCE[0]}")"
+ROOT_DIR="$(pwd)"
+echo "Setting default iTerm2 preferences folder to $ROOT_DIR"
+defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$ROOT_DIR"
+defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
+echo "Done iTerm2 preferences"
+echo
+
 # Copy all the things into ~
 echo "Copying dotfiles to $HOME..."
-cd "$(dirname "${BASH_SOURCE[0]}")/files"
 GLOBIGNORE=".:.."
-FILES_DIR="$(pwd)"
+cd files
 for FILE in *; do
-  ln -i -s "$FILES_DIR/$FILE" "$HOME/$FILE"
+  ln -is "$ROOT_DIR/files/$FILE" "$HOME/$FILE"
 done
 
 echo
