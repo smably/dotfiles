@@ -1,9 +1,12 @@
 #!/bin/bash
 
+# Init root dir
+cd "$(dirname "${BASH_SOURCE[0]}")"
+ROOT_DIR="$(pwd)"
+
 # Install all the things!
 echo "Installing the following homebrew formulas:"
 echo $(< brew-formulas.list)
-echo
 read -p "Would you like to continue (Y/n)? " answer
 case ${answer:0:1} in
   n|N )
@@ -20,7 +23,6 @@ esac
 # Install all the other things!
 echo "Installing the following homebrew casks:"
 echo $(< brew-casks.list)
-echo
 read -p "Would you like to continue (Y/n)? " answer
 case ${answer:0:1} in
   n|N )
@@ -34,6 +36,15 @@ case ${answer:0:1} in
   ;;
 esac
 
+# Install VS Code config
+VS_CODE_BIN_PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+VS_CODE_CONFIG_DIR="$HOME/Library/Application Support/Code/User"
+echo "Installing VS Code config to $VS_CODE_CONFIG_DIR..."
+cp -i "$ROOT_DIR/settings.json" "$VS_CODE_CONFIG_DIR"
+"$VS_CODE_BIN_PATH" --install-extension Shan.code-settings-sync
+echo "Done installing VS Code config (open VS Code and run <shift>-<opt>-D to sync settings)"
+echo
+
 # Install powerline-go (not available in Homebrew aaargh!)
 POWERLINE_GO_PATH="$HOME/go/bin/powerline-go" # TODO use $GOPATH if it's set?
 if [[ ! -x "$POWERLINE_GO_PATH" ]]; then
@@ -46,8 +57,6 @@ if [[ ! -x "$POWERLINE_GO_PATH" ]]; then
 fi
 
 # Install iTerm2 preferences
-cd "$(dirname "${BASH_SOURCE[0]}")"
-ROOT_DIR="$(pwd)"
 echo "Setting default iTerm2 preferences folder to $ROOT_DIR"
 defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$ROOT_DIR"
 defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
