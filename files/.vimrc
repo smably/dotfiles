@@ -260,7 +260,7 @@ endfunction
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " enable fenced code blocks in Markdown files
-let g:markdown_fenced_languages = ['html', 'python', 'javascript', 'bash=sh']
+let g:markdown_fenced_languages = ['html', 'python', 'js=javascript', 'bash=sh']
 
 " watch for changes to vimrc files and automatically reload
 augroup myvimrc
@@ -287,8 +287,6 @@ if has("gui_running") " all this for gui use
     set nolazyredraw
     set lines=60
     set columns=120
-    "set guifont=Monaco:h12
-    "set guifont=Monaco\ for\ Powerline:h12
     set macligatures
     set guifont=Iosevka:h12
   endif
