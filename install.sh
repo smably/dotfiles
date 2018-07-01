@@ -5,9 +5,9 @@ cd "$(dirname "${BASH_SOURCE[0]}")"
 ROOT_DIR="$(pwd)"
 
 # Install all the things!
-echo "Installing the following homebrew formulas:"
+echo "Would you like to install the following homebrew formulas:"
 echo $(< brew-formulas.list)
-read -p "Would you like to continue (Y/n)? " answer
+read -p "(Y/n)? " answer
 case ${answer:0:1} in
   n|N )
     echo
@@ -21,9 +21,9 @@ case ${answer:0:1} in
 esac
 
 # Install all the other things!
-echo "Installing the following homebrew casks:"
+echo "Would you like to install the following homebrew casks:"
 echo $(< brew-casks.list)
-read -p "Would you like to continue (Y/n)? " answer
+read -p "(Y/n)? " answer
 case ${answer:0:1} in
   n|N )
     echo
@@ -36,12 +36,28 @@ case ${answer:0:1} in
   ;;
 esac
 
+# Install node
+read -p "Would you like to install node (Y/n)? " answer
+case ${answer:0:1} in
+  n|N )
+    echo
+  ;;
+  * )
+    read -p "Enter the version you would like to install: " version
+    if [[ ! -z "$version" ]]; then
+      nodenv install "$version"
+      echo "Done installing node"
+    fi
+    echo
+  ;;
+esac
+
 # Install VS Code config
-VS_CODE_BIN_PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 VS_CODE_CONFIG_DIR="$HOME/Library/Application Support/Code/User"
+alias code="/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 echo "Installing VS Code config to $VS_CODE_CONFIG_DIR..."
 cp -i "$ROOT_DIR/settings.json" "$VS_CODE_CONFIG_DIR"
-"$VS_CODE_BIN_PATH" --install-extension Shan.code-settings-sync
+code --install-extension Shan.code-settings-sync
 echo "Done installing VS Code config (open VS Code and run <shift>-<opt>-D to sync settings)"
 echo
 
