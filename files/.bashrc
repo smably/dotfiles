@@ -15,15 +15,24 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# nodenv shim setup
 eval "$(nodenv init -)"
 
+# direnv
+eval "$(direnv hook bash)"
+
+# the fuck
 eval $(thefuck --alias)
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
+# bash completion
+if [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]]; then
+  . "/usr/local/etc/profile.d/bash_completion.sh"
 fi
+
+# fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # -------------------------------------
 
@@ -42,12 +51,11 @@ shopt -s histappend
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell
 
-# Custom colours for ls
-export LSCOLORS=ExFxCxDxBxegedabagacad
-
 # -------------------------------------
 
-
-alias ls='ls -Gph' # colours, / after dirs, human readable units
-alias ll='ls -la'
+alias ls='exa'
+alias ll='ls -l --git'
+alias la='ll -a'
+alias cat='bat'
+alias less='bat'
 alias git='hub'
