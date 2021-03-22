@@ -5,7 +5,7 @@ DOTFILES_DIR=${DOTFILE_DIR:-$HOME/.dotfiles}
 # Install Homebrew
 if ! hash brew 2>/dev/null; then
   echo "Installing Homebrew..."
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" && echo
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && echo
 fi
 
 # Clone dotfiles repo and run installation script
