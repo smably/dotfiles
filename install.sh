@@ -1,5 +1,7 @@
 #!/bin/bash
 
+PRIVATE_DOTFILES_DIR=${PRIVATE_DOTFILES_DIR:-$DOTFILES_DIR-private}
+
 # Init root dir
 cd "$(dirname "${BASH_SOURCE[0]}")"
 ROOT_DIR="$(pwd)"
@@ -55,6 +57,13 @@ n | N)
     echo "Installing Mackup..."
     brew install mackup
   fi
+  
+  if [[ ! -d "$PRIVATE_DOTFILES_DIR" ]]; then
+    echo "Cloning private dotfiles into $PRIVATE_DOTFILES_DIR..."
+    gh repo clone smably/dotfiles-private "$PRIVATE_DOTFILES_DIR" && echo
+    ln -s "$DOTFILES_DIR/.mackup.cfg" ~
+  fi
+  
   echo "Restoring Mackup settings from git backup..."
   mackup restore
   echo "All done! Vim plugins will be installed on first run."
