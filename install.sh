@@ -51,7 +51,11 @@ case ${answer:0:1} in
 n | N)
   ;;
 *)
-  echo "Restoring Mackup..."
+  if ! hash mackup 2>/dev/null; then
+    echo "Installing Mackup..."
+    brew install mackup
+  fi
+  echo "Restoring Mackup settings from git backup..."
   mackup restore
   echo "All done! Vim plugins will be installed on first run."
   echo
