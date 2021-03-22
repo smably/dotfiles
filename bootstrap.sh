@@ -10,11 +10,11 @@ fi
 
 # Clone dotfiles repo and run installation script
 if [[ -d "$DOTFILES_DIR" ]]; then
-  echo "Dotfiles directory $DOTFILES_DIR already exists. Aborting."
+  echo "Dotfiles directory $DOTFILES_DIR already exists. Source $DOTFILES_DIR/install.sh to install."
 else
   echo "Downloading and installing dotfiles into $DOTFILES_DIR..."
-  brew install hub && echo && \
-    hub clone smably/dotfiles "$DOTFILES_DIR" && echo && \
+  brew install gh && echo && \
+    gh auth login && \
+    gh repo clone smably/dotfiles "$DOTFILES_DIR" && echo && \
     source "$DOTFILES_DIR/install.sh"
 fi
-
