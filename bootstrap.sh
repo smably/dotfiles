@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOTFILES_DIR=${DOTFILE_DIR:-$HOME/.dotfiles}
+export DOTFILES_DIR=${DOTFILE_DIR:-$HOME/.dotfiles}
 
 # Install Homebrew
 if ! hash brew 2>/dev/null; then
