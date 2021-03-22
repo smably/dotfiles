@@ -39,10 +39,13 @@ case ${answer:0:1} in
 n | N)
   ;;
 *)
-  curl -o /usr/local/bin/powerline-go \
-    https://gitreleases.dev/gh/justjanne/powerline-go/latest/powerline-go-darwin-amd64 && \
-    chmod a+x /usr/local/bin/powerline-go
-  echo
+  if ! hash go 2>/dev/null; then
+    echo "Installing go..."
+    brew install go && echo
+  fi
+
+  echo "Installing powerline-go..."
+  go get -u github.com/justjanne/powerline-go && echo
   ;;
 esac
 
