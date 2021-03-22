@@ -1,10 +1,9 @@
 #!/bin/bash
 
-PRIVATE_DOTFILES_DIR=${PRIVATE_DOTFILES_DIR:-$DOTFILES_DIR-private}
-
-# Init root dir
+# Init environment vars
 cd "$(dirname "${BASH_SOURCE[0]}")"
-ROOT_DIR="$(pwd)"
+export DOTFILES_DIR="${DOTFILES_DIR:-$(pwd)}"
+export PRIVATE_DOTFILES_DIR=${PRIVATE_DOTFILES_DIR:-$DOTFILES_DIR-private}
 
 # Install all the things!
 read -p "Would you like to install Homebrew formulas (Y/n)? " answer
@@ -61,7 +60,11 @@ n | N)
   if [[ ! -d "$PRIVATE_DOTFILES_DIR" ]]; then
     echo "Cloning private dotfiles into $PRIVATE_DOTFILES_DIR..."
     gh repo clone smably/dotfiles-private "$PRIVATE_DOTFILES_DIR" && echo
-    ln -s "$DOTFILES_DIR/.mackup.cfg" ~
+  fi
+
+  if [[ ! -f ~/.mackup.cfg ]]; then
+    echo "Interpolating Mackup config..."
+    envsubst < "$DOTFILES_DIR/templates/.mackup.cfg" > ~/.mackup.cfg && echo
   fi
   
   echo "Restoring Mackup settings from git backup..."
