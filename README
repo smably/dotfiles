@@ -1,11 +1,11 @@
 smably's dotfiles repo
 
 INSTALLATION
-source <(curl -fsSL https://raw.githubusercontent.com/smably/dotfiles/master/bootstrap.sh)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/smably/dotfiles/master/bootstrap.sh)"
 
 TODO
- * update .slate and add more dotfiles
- * back up existing dotfiles before installation?
+ * add update script to sync repo with local dotfiles (on old computer)
+ * back up existing dotfiles before overwriting?
 
 DONE
  * add script for installation/symlinking
