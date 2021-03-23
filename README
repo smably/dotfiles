@@ -3,11 +3,14 @@ smably's dotfiles repo
 INSTALLATION
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/smably/dotfiles/master/bootstrap.sh)"
 
+MANUAL STEPS
+ * Go to https://fsd.it/ and download PragmataPro
+
 TODO
  * add update script to sync repo with local dotfiles (on old computer)
  * back up existing dotfiles before overwriting?
+ * add PragmataPro to files in private dotfiles repo
 
 DONE
  * add script for installation/symlinking
- * add other dotfiles (.bash_profile, .gitconfig, etc.)
  * make bootstrap script good
