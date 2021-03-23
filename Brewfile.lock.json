@@ -5,13 +5,13 @@
         "revision": "3fbca9f51db8e7255f4b2f48daba1e04a2d99ad6"
       },
       "homebrew/cask": {
-        "revision": "36eb15fc1e663f6e81ad78dbbf431bbf9e6fe19c"
+        "revision": "b5f31bae09153e6112916a52ed32bd35e201f608"
       },
       "homebrew/cask-fonts": {
-        "revision": "33795533ab24129e7bce02d8b4060556f34f5751"
+        "revision": "679d31659dd122931da13e9e3379f5780d4e250d"
       },
       "homebrew/core": {
-        "revision": "163b175bdfe3f2365f615d0ae5cc05e5b85b54cd"
+        "revision": "042f0322cc21f893c56c5d69f3d0843ed105d4cb"
       }
     },
     "brew": {
@@ -113,7 +113,7 @@
         }
       },
       "circleci": {
-        "version": "0.1.15172",
+        "version": "0.1.15195",
         "bottle": {
           "rebuild": 0,
           "cellar": ":any_skip_relocation",
@@ -121,16 +121,16 @@
           "root_url": "https://homebrew.bintray.com/bottles",
           "files": {
             "big_sur": {
-              "url": "https://homebrew.bintray.com/bottles/circleci-0.1.15172.big_sur.bottle.tar.gz",
-              "sha256": "74675f72324d47ebf94ca34d3fa84b94e2724dd3a63464078185bac2854a0f99"
+              "url": "https://homebrew.bintray.com/bottles/circleci-0.1.15195.big_sur.bottle.tar.gz",
+              "sha256": "96c8a6e002803457c6d6ad478c741cae639eafbb01fe55619ffd733daae0fadb"
             },
             "catalina": {
-              "url": "https://homebrew.bintray.com/bottles/circleci-0.1.15172.catalina.bottle.tar.gz",
-              "sha256": "66740ba00c2a498e923c7be5cd918408040ca9f237999bd5137c82d81a4a551c"
+              "url": "https://homebrew.bintray.com/bottles/circleci-0.1.15195.catalina.bottle.tar.gz",
+              "sha256": "dab02bb6bef331726927c1f14715d3934b7c8ae5cd71aced826db1f58bc092e0"
             },
             "mojave": {
-              "url": "https://homebrew.bintray.com/bottles/circleci-0.1.15172.mojave.bottle.tar.gz",
-              "sha256": "289f70fdadcdaa7aa63a19f6d1f4419efda2463f1bb916a53200d625fd78aae4"
+              "url": "https://homebrew.bintray.com/bottles/circleci-0.1.15195.mojave.bottle.tar.gz",
+              "sha256": "995339d1c3d67f26a0fdab94f08df59e4b98c008ca44fae7c7466e09ca54446e"
             }
           }
         }
@@ -743,7 +743,10 @@
       },
       "tfenv": {
         "version": "2.2.0",
-        "bottle": false
+        "bottle": false,
+        "options": {
+          "link": false
+        }
       },
       "the_silver_searcher": {
         "version": "2.2.0",
@@ -912,7 +915,7 @@
         }
       },
       "firefox": {
-        "version": "86.0.1",
+        "version": "87.0",
         "options": {
           "full_name": "firefox"
         }
@@ -1018,6 +1021,12 @@
         "options": {
           "full_name": "zeplin"
         }
+      },
+      "imageoptim": {
+        "version": "1.8.8",
+        "options": {
+          "full_name": "imageoptim"
+        }
       }
     },
     "mas": {
@@ -1056,7 +1065,7 @@
       "big_sur": {
         "HOMEBREW_VERSION": "3.0.8",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "163b175bdfe3f2365f615d0ae5cc05e5b85b54cd",
+        "Homebrew/homebrew-core": "042f0322cc21f893c56c5d69f3d0843ed105d4cb",
         "CLT": "12.4.0.0.1.1610135815",
         "Xcode": "12.0",
         "macOS": "11.2.3"
