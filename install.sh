@@ -33,22 +33,6 @@ n | N)
   ;;
 esac
 
-# Install powerline-go (not available in Homebrew aaargh!)
-read -p "Would you like to install powerline-go (Y/n)? " answer
-case ${answer:0:1} in
-n | N)
-  ;;
-*)
-  if ! hash go 2>/dev/null; then
-    echo "Installing go..."
-    brew install go && echo
-  fi
-
-  echo "Installing powerline-go..."
-  go get -u github.com/justjanne/powerline-go && echo
-  ;;
-esac
-
 # Restore backed up settings
 read -p "Would you like to restore configs from private dotfiles repo using Mackup (Y/n)? " answer
 case ${answer:0:1} in
