@@ -14,6 +14,7 @@ brew "deno"
 brew "diff-so-fancy"
 brew "difftastic"
 brew "direnv"
+brew "docker"
 brew "docker-credential-helper"
 brew "duf"
 brew "exa"
@@ -51,6 +52,7 @@ brew "z"
 brew "hashicorp/tap/vault"
 brew "mongodb/brew/mongodb-community"
 cask "adobe-acrobat-reader"
+cask "arc"
 cask "authy"
 cask "bartender"
 cask "docker"
@@ -82,10 +84,12 @@ cask "tunnelblick"
 cask "visual-studio-code"
 cask "zeplin"
 cask "zoom"
-mas "Dashlane", id: 552383089
+mas "HP Smart", id: 1474276998
 mas "Keynote", id: 409183694
 mas "LastPass", id: 926036361
 mas "Magnet", id: 441258766
+mas "MuteKey", id: 1509590766
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
-mas "Shush", id: 496437906
+mas "Transporter", id: 1450874784
+mas "WireGuard", id: 1451685025
